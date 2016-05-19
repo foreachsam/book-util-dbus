@@ -247,6 +247,22 @@
         
       
       
+        <ul>
+          
+            <li class="anchor">
+              <a title="說明" href="#_1">
+                說明
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="範例" href="#_2">
+                範例
+              </a>
+            </li>
+          
+        </ul>
+      
     
   </li>
 
@@ -289,6 +305,171 @@
         <div class="wrapper">
           
           <h1 id="gdbus">gdbus</h1>
+<h2 id="_1">說明</h2>
+<p>這個範例，說明如何利用「<a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/gdbus.1.html">gdbus</a>」這個指令，來跟「<a href="http://packages.ubuntu.com/xenial/fcitx">fcitx</a>」溝通，切換輸入法。</p>
+<h2 id="_2">範例</h2>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ gdbus introspect --session --dest org.fcitx.Fcitx --object-path /</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>node / {
+  node MenuBar {
+  };
+  node StatusNotifierItem {
+  };
+  node inputmethod {
+  };
+  node keyboard {
+  };
+  node kimpanel {
+  };
+};</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ gdbus introspect --session --dest org.fcitx.Fcitx --object-path / --xml</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>&lt;!DOCTYPE node PUBLIC &quot;-//freedesktop//DTD D-BUS Object Introspection 1.0//EN&quot;
+&quot;http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd&quot;&gt;
+&lt;node&gt;
+  &lt;node name=&quot;MenuBar&quot;/&gt;
+  &lt;node name=&quot;StatusNotifierItem&quot;/&gt;
+  &lt;node name=&quot;inputmethod&quot;/&gt;
+  &lt;node name=&quot;keyboard&quot;/&gt;
+  &lt;node name=&quot;kimpanel&quot;/&gt;
+&lt;/node&gt;</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code>$ gdbus introspect --session --dest org.fcitx.Fcitx --object-path / --recurse</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>...略...</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ gdbus introspect --session --dest org.fcitx.Fcitx --object-path /inputmethod</code></pre>
+
+
+<p>或是執行</p>
+<pre class="code"><code class="language-sh">$ gdbus introspect --session --dest org.fcitx.Fcitx --object-path /inputmethod | less</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>node /inputmethod {
+  interface org.freedesktop.DBus.Introspectable {
+    methods:
+      Introspect(out s data);
+    signals:
+    properties:
+  };
+  interface org.freedesktop.DBus.Properties {
+    methods:
+      Get(in  s interface_name,
+          in  s property_name,
+          out v value);
+      Set(in  s interface_name,
+          in  s property_name,
+          in  v value);
+      GetAll(in  s interface_name,
+             out a{sv} values);
+    signals:
+      PropertiesChanged(s interface_name,
+                        a{sv} changed_properties,
+                        as invalidated_properties);
+    properties:
+  };
+  interface org.fcitx.Fcitx.InputMethod {
+    methods:
+      CreateIC(out i icid,
+               out u keyval1,
+               out u state1,
+               out u keyval2,
+               out u state2);
+      CreateICv2(in  s appname,
+                 out i icid,
+                 out b enable,
+                 out u keyval1,
+                 out u state1,
+                 out u keyval2,
+                 out u state2);
+      CreateICv3(in  s appname,
+                 in  i pid,
+                 out i icid,
+                 out b enable,
+                 out u keyval1,
+                 out u state1,
+                 out u keyval2,
+                 out u state2);
+      Exit();
+      GetCurrentIM(out s im);
+      SetCurrentIM(in  s im);
+      ReloadConfig();
+      ReloadAddonConfig(in  s addon);
+      Restart();
+      Configure();
+      ConfigureAddon(in  s addon);
+      ConfigureIM(in  s im);
+      GetCurrentUI(out s addon);
+      GetIMAddon(in  s im,
+                 out s addon);
+      ActivateIM();
+      InactivateIM();
+      ToggleIM();
+      ResetIMList();
+      GetCurrentState(out i state);
+    signals:
+    properties:
+      @org.freedesktop.DBus.Property.EmitsChangedSignal(&quot;true&quot;)
+...略...</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ gdbus introspect --session --dest org.fcitx.Fcitx --object-path /inputmethod</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>...略...</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ gdbus call --session --dest org.fcitx.Fcitx --object-path /inputmethod --method org.fcitx.Fcitx.InputMethod.GetCurrentIM</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>('fcitx-keyboard-us',)</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ gdbus call --session --dest org.fcitx.Fcitx --object-path /inputmethod --method org.fcitx.Fcitx.InputMethod.SetCurrentIM chewing</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>()</code></pre>
+
+
+<p>就會把輸入法切換到「<a href="http://packages.ubuntu.com/xenial/fcitx-chewing">fcitx-chewing (新酷音)</a>」。</p>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ gdbus call --session --dest org.fcitx.Fcitx --object-path /inputmethod --method org.fcitx.Fcitx.InputMethod.GetCurrentIM</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>('chewing',)</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ gdbus call --session --dest org.fcitx.Fcitx --object-path /inputmethod --method org.fcitx.Fcitx.InputMethod.SetCurrentIM fcitx-keyboard-us</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>()</code></pre>
+
+
+<p>就會把輸入法切回到「英文輸入」。</p>
           <aside class="copyright" role="note">
             
               Copyright (c) foreachsam &ndash;

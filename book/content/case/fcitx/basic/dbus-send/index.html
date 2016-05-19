@@ -256,6 +256,22 @@
         
       
       
+        <ul>
+          
+            <li class="anchor">
+              <a title="說明" href="#_1">
+                說明
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="範例" href="#_2">
+                範例
+              </a>
+            </li>
+          
+        </ul>
+      
     
   </li>
 
@@ -289,6 +305,45 @@
         <div class="wrapper">
           
           <h1 id="dbus-send">dbus-send</h1>
+<h2 id="_1">說明</h2>
+<p>這個範例，說明如何利用「<a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dbus-send.1.html">dbus-send</a>」這個指令，來跟「<a href="http://packages.ubuntu.com/xenial/fcitx">fcitx</a>」溝通，切換輸入法。</p>
+<h2 id="_2">範例</h2>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>method return time=1463662561.728070 sender=:1.2982 -&gt; destination=:1.3026 serial=5196 reply_serial=2
+   string &quot;fcitx-keyboard-us&quot;</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM string:chewing</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>method return time=1463662784.583418 sender=:1.2982 -&gt; destination=:1.3029 serial=5443 reply_serial=2</code></pre>
+
+
+<p>就會把輸入法切換到「<a href="http://packages.ubuntu.com/xenial/fcitx-chewing">fcitx-chewing (新酷音)</a>」。</p>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>method return time=1463662866.154865 sender=:1.2982 -&gt; destination=:1.3030 serial=5546 reply_serial=2
+   string &quot;chewing&quot;</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM string:fcitx-keyboard-us</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>method return time=1463662933.454180 sender=:1.2982 -&gt; destination=:1.3032 serial=5683 reply_serial=2</code></pre>
+
+
+<p>就會把輸入法切回到「英文輸入」。</p>
           <aside class="copyright" role="note">
             
               Copyright (c) foreachsam &ndash;

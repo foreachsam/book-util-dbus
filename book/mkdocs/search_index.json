@@ -167,13 +167,23 @@
         },
         {
             "location": "/content/case/fcitx/basic/dbus-send/",
-            "text": "dbus-send",
+            "text": "dbus-send\n\n\n\u8aaa\u660e\n\n\n\u9019\u500b\u7bc4\u4f8b\uff0c\u8aaa\u660e\u5982\u4f55\u5229\u7528\u300c\ndbus-send\n\u300d\u9019\u500b\u6307\u4ee4\uff0c\u4f86\u8ddf\u300c\nfcitx\n\u300d\u6e9d\u901a\uff0c\u5207\u63db\u8f38\u5165\u6cd5\u3002\n\n\n\u7bc4\u4f8b\n\n\n\u57f7\u884c\n\n\n$ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM\n\n\n\n\n\u986f\u793a\n\n\nmethod return time=1463662561.728070 sender=:1.2982 -\n destination=:1.3026 serial=5196 reply_serial=2\n   string \nfcitx-keyboard-us\n\n\n\n\n\u57f7\u884c\n\n\n$ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM string:chewing\n\n\n\n\n\u986f\u793a\n\n\nmethod return time=1463662784.583418 sender=:1.2982 -\n destination=:1.3029 serial=5443 reply_serial=2\n\n\n\n\n\u5c31\u6703\u628a\u8f38\u5165\u6cd5\u5207\u63db\u5230\u300c\nfcitx-chewing (\u65b0\u9177\u97f3)\n\u300d\u3002\n\n\n\u57f7\u884c\n\n\n$ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM\n\n\n\n\n\u986f\u793a\n\n\nmethod return time=1463662866.154865 sender=:1.2982 -\n destination=:1.3030 serial=5546 reply_serial=2\n   string \nchewing\n\n\n\n\n\u57f7\u884c\n\n\n$ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM string:fcitx-keyboard-us\n\n\n\n\n\u986f\u793a\n\n\nmethod return time=1463662933.454180 sender=:1.2982 -\n destination=:1.3032 serial=5683 reply_serial=2\n\n\n\n\n\u5c31\u6703\u628a\u8f38\u5165\u6cd5\u5207\u56de\u5230\u300c\u82f1\u6587\u8f38\u5165\u300d\u3002",
             "title": "dbus-send"
         },
         {
             "location": "/content/case/fcitx/basic/dbus-send/#dbus-send",
             "text": "",
             "title": "dbus-send"
+        },
+        {
+            "location": "/content/case/fcitx/basic/dbus-send/#_1",
+            "text": "\u9019\u500b\u7bc4\u4f8b\uff0c\u8aaa\u660e\u5982\u4f55\u5229\u7528\u300c dbus-send \u300d\u9019\u500b\u6307\u4ee4\uff0c\u4f86\u8ddf\u300c fcitx \u300d\u6e9d\u901a\uff0c\u5207\u63db\u8f38\u5165\u6cd5\u3002",
+            "title": "\u8aaa\u660e"
+        },
+        {
+            "location": "/content/case/fcitx/basic/dbus-send/#_2",
+            "text": "\u57f7\u884c  $ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM  \u986f\u793a  method return time=1463662561.728070 sender=:1.2982 -  destination=:1.3026 serial=5196 reply_serial=2\n   string  fcitx-keyboard-us  \u57f7\u884c  $ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM string:chewing  \u986f\u793a  method return time=1463662784.583418 sender=:1.2982 -  destination=:1.3029 serial=5443 reply_serial=2  \u5c31\u6703\u628a\u8f38\u5165\u6cd5\u5207\u63db\u5230\u300c fcitx-chewing (\u65b0\u9177\u97f3) \u300d\u3002  \u57f7\u884c  $ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM  \u986f\u793a  method return time=1463662866.154865 sender=:1.2982 -  destination=:1.3030 serial=5546 reply_serial=2\n   string  chewing  \u57f7\u884c  $ dbus-send --session --dest=org.fcitx.Fcitx --print-reply /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM string:fcitx-keyboard-us  \u986f\u793a  method return time=1463662933.454180 sender=:1.2982 -  destination=:1.3032 serial=5683 reply_serial=2  \u5c31\u6703\u628a\u8f38\u5165\u6cd5\u5207\u56de\u5230\u300c\u82f1\u6587\u8f38\u5165\u300d\u3002",
+            "title": "\u7bc4\u4f8b"
         }
     ]
 }

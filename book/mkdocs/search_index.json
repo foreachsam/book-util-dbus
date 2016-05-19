@@ -124,6 +124,46 @@
             "location": "/content/command/dbus-send/#dbus-send_1",
             "text": "\u57f7\u884c  $ dpkg -S /usr/bin/dbus-send  \u986f\u793a  dbus: /usr/bin/dbus-send  \u8868\u793a\u300c/usr/bin/dbus-send\u300d\u662f\u5c6c\u65bc\u300c dbus \u300d\u9019\u500b\u5957\u4ef6\u3002",
             "title": "\u67e5\u8a62 dbus-send \u5c6c\u65bc\u90a3\u500b\u5957\u4ef6"
+        },
+        {
+            "location": "/content/case/fcitx/basic/qdbus/",
+            "text": "qdbus\n\n\n\u8aaa\u660e\n\n\n\u9019\u500b\u7bc4\u4f8b\uff0c\u8aaa\u660e\u5982\u4f55\u5229\u7528\u300c\nqdbus\n\u300d\u9019\u500b\u6307\u4ee4\uff0c\u4f86\u8ddf\u300c\nfcitx\n\u300d\u6e9d\u901a\uff0c\u5207\u63db\u8f38\u5165\u6cd5\u3002\n\n\n\u7bc4\u4f8b\n\n\n\u57f7\u884c\n\n\n$ qdbus org.fcitx.Fcitx\n\n\n\n\n\u986f\u793a\n\n\n/\n/MenuBar\n/StatusNotifierItem\n/inputmethod\n/keyboard\n/kimpanel\n\n\n\n\n\u57f7\u884c\n\n\n$ qdbus org.fcitx.Fcitx /inputmethod\n\n\n\n\n\u986f\u793a\n\n\nmethod QString org.freedesktop.DBus.Introspectable.Introspect()\nsignal void org.freedesktop.DBus.Properties.PropertiesChanged(QString interface_name, QVariantMap changed_properties, QStringList invalidated_properties)\nmethod QDBusVariant org.freedesktop.DBus.Properties.Get(QString interface_name, QString property_name)\nmethod QVariantMap org.freedesktop.DBus.Properties.GetAll(QString interface_name)\nmethod void org.freedesktop.DBus.Properties.Set(QString interface_name, QString property_name, QDBusVariant value)\nproperty readwrite QString org.fcitx.Fcitx.InputMethod.CurrentIM\nproperty readwrite {D-Bus type \na(sssb)\n} org.fcitx.Fcitx.InputMethod.IMList\nmethod void org.fcitx.Fcitx.InputMethod.ActivateIM()\nmethod void org.fcitx.Fcitx.InputMethod.Configure()\nmethod void org.fcitx.Fcitx.InputMethod.ConfigureAddon(QString addon)\nmethod void org.fcitx.Fcitx.InputMethod.ConfigureIM(QString im)\nmethod int org.fcitx.Fcitx.InputMethod.CreateIC(uint\n keyval1, uint\n state1, uint\n keyval2, uint\n state2)\nmethod int org.fcitx.Fcitx.InputMethod.CreateICv2(QString appname, bool\n enable, uint\n keyval1, uint\n state1, uint\n keyval2, uint\n state2)\nmethod int org.fcitx.Fcitx.InputMethod.CreateICv3(QString appname, int pid, bool\n enable, uint\n keyval1, uint\n state1, uint\n keyval2, uint\n state2)\nmethod void org.fcitx.Fcitx.InputMethod.Exit()\nmethod QString org.fcitx.Fcitx.InputMethod.GetCurrentIM()\nmethod int org.fcitx.Fcitx.InputMethod.GetCurrentState()\nmethod QString org.fcitx.Fcitx.InputMethod.GetCurrentUI()\nmethod QString org.fcitx.Fcitx.InputMethod.GetIMAddon(QString im)\nmethod void org.fcitx.Fcitx.InputMethod.InactivateIM()\nmethod void org.fcitx.Fcitx.InputMethod.ReloadAddonConfig(QString addon)\nmethod void org.fcitx.Fcitx.InputMethod.ReloadConfig()\nmethod void org.fcitx.Fcitx.InputMethod.ResetIMList()\nmethod void org.fcitx.Fcitx.InputMethod.Restart()\nmethod void org.fcitx.Fcitx.InputMethod.SetCurrentIM(QString im)\nmethod void org.fcitx.Fcitx.InputMethod.ToggleIM()\n\n\n\n\n\u57f7\u884c\n\n\n$ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM\n\n\n\n\n\u986f\u793a\n\n\nfcitx-keyboard-us\n\n\n\n\n\u57f7\u884c\n\n\n$ qdbus --literal org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM\n\n\n\n\n\u986f\u793a\n\n\nfcitx-keyboard-us\n\n\n\n\n\u57f7\u884c\n\n\n$ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM chewing\n\n\n\n\n\u5c31\u6703\u628a\u8f38\u5165\u6cd5\u5207\u63db\u5230\u300c\nfcitx-chewing (\u65b0\u9177\u97f3)\n\u300d\u3002\n\n\n\u57f7\u884c\n\n\n$ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM\n\n\n\n\n\u986f\u793a\n\n\nchewing\n\n\n\n\n\u57f7\u884c\n\n\n$ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM fcitx-keyboard-us\n\n\n\n\n\u5c31\u6703\u628a\u8f38\u5165\u6cd5\u5207\u56de\u5230\u300c\u82f1\u6587\u8f38\u5165\u300d\u3002",
+            "title": "qdbus"
+        },
+        {
+            "location": "/content/case/fcitx/basic/qdbus/#qdbus",
+            "text": "",
+            "title": "qdbus"
+        },
+        {
+            "location": "/content/case/fcitx/basic/qdbus/#_1",
+            "text": "\u9019\u500b\u7bc4\u4f8b\uff0c\u8aaa\u660e\u5982\u4f55\u5229\u7528\u300c qdbus \u300d\u9019\u500b\u6307\u4ee4\uff0c\u4f86\u8ddf\u300c fcitx \u300d\u6e9d\u901a\uff0c\u5207\u63db\u8f38\u5165\u6cd5\u3002",
+            "title": "\u8aaa\u660e"
+        },
+        {
+            "location": "/content/case/fcitx/basic/qdbus/#_2",
+            "text": "\u57f7\u884c  $ qdbus org.fcitx.Fcitx  \u986f\u793a  /\n/MenuBar\n/StatusNotifierItem\n/inputmethod\n/keyboard\n/kimpanel  \u57f7\u884c  $ qdbus org.fcitx.Fcitx /inputmethod  \u986f\u793a  method QString org.freedesktop.DBus.Introspectable.Introspect()\nsignal void org.freedesktop.DBus.Properties.PropertiesChanged(QString interface_name, QVariantMap changed_properties, QStringList invalidated_properties)\nmethod QDBusVariant org.freedesktop.DBus.Properties.Get(QString interface_name, QString property_name)\nmethod QVariantMap org.freedesktop.DBus.Properties.GetAll(QString interface_name)\nmethod void org.freedesktop.DBus.Properties.Set(QString interface_name, QString property_name, QDBusVariant value)\nproperty readwrite QString org.fcitx.Fcitx.InputMethod.CurrentIM\nproperty readwrite {D-Bus type  a(sssb) } org.fcitx.Fcitx.InputMethod.IMList\nmethod void org.fcitx.Fcitx.InputMethod.ActivateIM()\nmethod void org.fcitx.Fcitx.InputMethod.Configure()\nmethod void org.fcitx.Fcitx.InputMethod.ConfigureAddon(QString addon)\nmethod void org.fcitx.Fcitx.InputMethod.ConfigureIM(QString im)\nmethod int org.fcitx.Fcitx.InputMethod.CreateIC(uint  keyval1, uint  state1, uint  keyval2, uint  state2)\nmethod int org.fcitx.Fcitx.InputMethod.CreateICv2(QString appname, bool  enable, uint  keyval1, uint  state1, uint  keyval2, uint  state2)\nmethod int org.fcitx.Fcitx.InputMethod.CreateICv3(QString appname, int pid, bool  enable, uint  keyval1, uint  state1, uint  keyval2, uint  state2)\nmethod void org.fcitx.Fcitx.InputMethod.Exit()\nmethod QString org.fcitx.Fcitx.InputMethod.GetCurrentIM()\nmethod int org.fcitx.Fcitx.InputMethod.GetCurrentState()\nmethod QString org.fcitx.Fcitx.InputMethod.GetCurrentUI()\nmethod QString org.fcitx.Fcitx.InputMethod.GetIMAddon(QString im)\nmethod void org.fcitx.Fcitx.InputMethod.InactivateIM()\nmethod void org.fcitx.Fcitx.InputMethod.ReloadAddonConfig(QString addon)\nmethod void org.fcitx.Fcitx.InputMethod.ReloadConfig()\nmethod void org.fcitx.Fcitx.InputMethod.ResetIMList()\nmethod void org.fcitx.Fcitx.InputMethod.Restart()\nmethod void org.fcitx.Fcitx.InputMethod.SetCurrentIM(QString im)\nmethod void org.fcitx.Fcitx.InputMethod.ToggleIM()  \u57f7\u884c  $ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM  \u986f\u793a  fcitx-keyboard-us  \u57f7\u884c  $ qdbus --literal org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM  \u986f\u793a  fcitx-keyboard-us  \u57f7\u884c  $ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM chewing  \u5c31\u6703\u628a\u8f38\u5165\u6cd5\u5207\u63db\u5230\u300c fcitx-chewing (\u65b0\u9177\u97f3) \u300d\u3002  \u57f7\u884c  $ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM  \u986f\u793a  chewing  \u57f7\u884c  $ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM fcitx-keyboard-us  \u5c31\u6703\u628a\u8f38\u5165\u6cd5\u5207\u56de\u5230\u300c\u82f1\u6587\u8f38\u5165\u300d\u3002",
+            "title": "\u7bc4\u4f8b"
+        },
+        {
+            "location": "/content/case/fcitx/basic/gdbus/",
+            "text": "gdbus",
+            "title": "gdbus"
+        },
+        {
+            "location": "/content/case/fcitx/basic/gdbus/#gdbus",
+            "text": "",
+            "title": "gdbus"
+        },
+        {
+            "location": "/content/case/fcitx/basic/dbus-send/",
+            "text": "dbus-send",
+            "title": "dbus-send"
+        },
+        {
+            "location": "/content/case/fcitx/basic/dbus-send/#dbus-send",
+            "text": "",
+            "title": "dbus-send"
         }
     ]
 }

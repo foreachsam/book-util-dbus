@@ -45,4 +45,26 @@
         
     
 
+    
+        
+    <url>
+     <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/qdbus/</loc>
+     <lastmod>2016-05-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gdbus/</loc>
+     <lastmod>2016-05-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/dbus-send/</loc>
+     <lastmod>2016-05-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
 </urlset>

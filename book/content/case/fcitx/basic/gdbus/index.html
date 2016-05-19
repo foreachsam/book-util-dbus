@@ -9,45 +9,45 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>manual - D-Bus 使用筆記</title>
+        <title>gdbus - D-Bus 使用筆記</title>
       
       
       
-        <link rel="canonical" href="https://foreachsam.github.io/book-util-dbus/book/content/referance/manual/">
+        <link rel="canonical" href="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gdbus/">
       
       
         <meta name="author" content="foreachsam">
       
     
-    <meta property="og:url" content="https://foreachsam.github.io/book-util-dbus/book/content/referance/manual/">
+    <meta property="og:url" content="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gdbus/">
     <meta property="og:title" content="D-Bus 使用筆記">
-    <meta property="og:image" content="https://foreachsam.github.io/book-util-dbus/book/content/referance/manual//../../../">
+    <meta property="og:image" content="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gdbus//../../../../../">
     <meta name="apple-mobile-web-app-title" content="D-Bus 使用筆記">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     
-    <link rel="shortcut icon" type="image/x-icon" href="../../../None">
-    <link rel="icon" type="image/x-icon" href="../../../None">
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../None">
+    <link rel="icon" type="image/x-icon" href="../../../../../None">
     <style>
       @font-face {
       	font-family: 'Icon';
-      	src: url('../../../assets/fonts/icon.eot?52m981');
-      	src: url('../../../assets/fonts/icon.eot?#iefix52m981')
+      	src: url('../../../../../assets/fonts/icon.eot?52m981');
+      	src: url('../../../../../assets/fonts/icon.eot?#iefix52m981')
                format('embedded-opentype'),
-      		   url('../../../assets/fonts/icon.woff?52m981')
+      		   url('../../../../../assets/fonts/icon.woff?52m981')
                format('woff'),
-      		   url('../../../assets/fonts/icon.ttf?52m981')
+      		   url('../../../../../assets/fonts/icon.ttf?52m981')
                format('truetype'),
-      		   url('../../../assets/fonts/icon.svg?52m981#icon')
+      		   url('../../../../../assets/fonts/icon.svg?52m981#icon')
                format('svg');
       	font-weight: normal;
       	font-style: normal;
       }
     </style>
-    <link rel="stylesheet" href="../../../assets/stylesheets/application-54f87043f3.css">
+    <link rel="stylesheet" href="../../../../../assets/stylesheets/application-54f87043f3.css">
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/palettes-05ab2406df.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/palettes-05ab2406df.css">
     
     
       
@@ -64,7 +64,7 @@
       </style>
     
     
-    <script src="../../../assets/javascripts/modernizr-4ab42b99fd.js"></script>
+    <script src="../../../../../assets/javascripts/modernizr-4ab42b99fd.js"></script>
     
   </head>
   
@@ -92,12 +92,12 @@
           <span class="path">
             
               
-                參考文件 <i class="icon icon-link"></i>
+                case fcitx <i class="icon icon-link"></i>
               
             
           </span>
         
-        manual
+        gdbus
       </div>
     </div>
     
@@ -153,7 +153,7 @@
           
             
   <li>
-    <a class="" title="首頁" href="../../..">
+    <a class="" title="首頁" href="../../../../..">
       首頁
     </a>
     
@@ -167,24 +167,9 @@
       
         
   <li>
-    <a class="current" title="manual" href="./">
+    <a class="" title="manual" href="../../../../referance/manual/">
       manual
     </a>
-    
-      
-        
-      
-      
-        <ul>
-          
-            <li class="anchor">
-              <a title="閱讀文件" href="#_1">
-                閱讀文件
-              </a>
-            </li>
-          
-        </ul>
-      
     
   </li>
 
@@ -200,7 +185,7 @@
       
         
   <li>
-    <a class="" title="index" href="../../deb-package/">
+    <a class="" title="index" href="../../../../deb-package/">
       index
     </a>
     
@@ -209,7 +194,7 @@
       
         
   <li>
-    <a class="" title="dbus" href="../../deb-package/dbus/">
+    <a class="" title="dbus" href="../../../../deb-package/dbus/">
       dbus
     </a>
     
@@ -227,7 +212,7 @@
       
         
   <li>
-    <a class="" title="dbus-send" href="../../command/dbus-send/">
+    <a class="" title="dbus-send" href="../../../../command/dbus-send/">
       dbus-send
     </a>
     
@@ -245,7 +230,7 @@
       
         
   <li>
-    <a class="" title="qdbus" href="../../case/fcitx/basic/qdbus/">
+    <a class="" title="qdbus" href="../qdbus/">
       qdbus
     </a>
     
@@ -254,16 +239,21 @@
       
         
   <li>
-    <a class="" title="gdbus" href="../../case/fcitx/basic/gdbus/">
+    <a class="current" title="gdbus" href="./">
       gdbus
     </a>
+    
+      
+        
+      
+      
     
   </li>
 
       
         
   <li>
-    <a class="" title="dbus-send" href="../../case/fcitx/basic/dbus-send/">
+    <a class="" title="dbus-send" href="../dbus-send/">
       dbus-send
     </a>
     
@@ -298,20 +288,7 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="manual">manual</h1>
-<h2 id="_1">閱讀文件</h2>
-<ul>
-<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dbus-monitor.1.html">dbus-monitor</a></li>
-<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dbus-send.1.html">dbus-send</a></li>
-<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dbus-uuidgen.1.html">dbus-uuidgen</a></li>
-<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dbus-daemon.1.html">dbus-daemon</a></li>
-<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dbus-update-activation-environment.1.html">dbus-update-activation-environment</a></li>
-<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dbus-cleanup-sockets.1.html">dbus-cleanup-sockets</a></li>
-<li>$ man 1 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dbus-run-session.1.html">dbus-run-session</a></li>
-<li>Wikipedia / <a href="https://en.wikipedia.org/wiki/D-Bus">D-Bus</a></li>
-<li>維基百科 / <a href="https://zh.wikipedia.org/zh-tw/D-Bus">D-Bus</a></li>
-<li>Arch Wiki / <a href="https://wiki.archlinux.org/index.php/D-Bus">D-Bus</a></li>
-</ul>
+          <h1 id="gdbus">gdbus</h1>
           <aside class="copyright" role="note">
             
               Copyright (c) foreachsam &ndash;
@@ -330,7 +307,7 @@
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href="../../.." title="首頁">
+        <a href="../qdbus/" title="qdbus">
           <span class="direction">
             上一頁
           </span>
@@ -340,7 +317,7 @@
             </div>
             <div class="stretch">
               <div class="title">
-                首頁
+                qdbus
               </div>
             </div>
           </div>
@@ -349,14 +326,14 @@
     </div>
     <div class="next">
       
-        <a href="../../deb-package/" title="index">
+        <a href="../dbus-send/" title="dbus-send">
           <span class="direction">
             下一頁
           </span>
           <div class="page">
             <div class="stretch">
               <div class="title">
-                index
+                dbus-send
               </div>
             </div>
             <div class="button button-next" role="button" aria-label="Next">
@@ -382,10 +359,10 @@
       </div>
     </main>
     <script>
-      var base_url = '../../..';
+      var base_url = '../../../../..';
       var repo_id  = '';
     </script>
-    <script src="../../../assets/javascripts/application-997097ee0c.js"></script>
+    <script src="../../../../../assets/javascripts/application-997097ee0c.js"></script>
     
     
       <script>

@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html class="no-js ie8"><![endif]-->
+<!--[if IE 9 ]><html class="no-js ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    
+      
+        <title>qdbus - D-Bus 使用筆記</title>
+      
+      
+      
+        <link rel="canonical" href="https://foreachsam.github.io/book-util-dbus/book/content/case/dbus/basic/qdbus/">
+      
+      
+        <meta name="author" content="foreachsam">
+      
+    
+    <meta property="og:url" content="https://foreachsam.github.io/book-util-dbus/book/content/case/dbus/basic/qdbus/">
+    <meta property="og:title" content="D-Bus 使用筆記">
+    <meta property="og:image" content="https://foreachsam.github.io/book-util-dbus/book/content/case/dbus/basic/qdbus//../../../../../">
+    <meta name="apple-mobile-web-app-title" content="D-Bus 使用筆記">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../../None">
+    <link rel="icon" type="image/x-icon" href="../../../../../None">
+    <style>
+      @font-face {
+      	font-family: 'Icon';
+      	src: url('../../../../../assets/fonts/icon.eot?52m981');
+      	src: url('../../../../../assets/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+      		   url('../../../../../assets/fonts/icon.woff?52m981')
+               format('woff'),
+      		   url('../../../../../assets/fonts/icon.ttf?52m981')
+               format('truetype'),
+      		   url('../../../../../assets/fonts/icon.svg?52m981#icon')
+               format('svg');
+      	font-weight: normal;
+      	font-style: normal;
+      }
+    </style>
+    <link rel="stylesheet" href="../../../../../assets/stylesheets/application-54f87043f3.css">
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/palettes-05ab2406df.css">
+    
+    
+      
+      
+      
+      <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Roboto+Mono">
+      <style>
+        body, input {
+          font-family: 'Roboto', Helvetica, Arial, sans-serif;
+        }
+        pre, code {
+          font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+        }
+      </style>
+    
+    
+    <script src="../../../../../assets/javascripts/modernizr-4ab42b99fd.js"></script>
+    
+  </head>
+  
+  
+  
+  <body class="palette-primary-blue palette-accent-light-blue">
+    
+    <div class="backdrop">
+      <div class="backdrop-paper"></div>
+    </div>
+    <input class="toggle" type="checkbox" id="toggle-drawer">
+    <input class="toggle" type="checkbox" id="toggle-search">
+    <label class="toggle-button overlay" for="toggle-drawer"></label>
+    <header class="header">
+      <nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        
+          <span class="path">
+            
+              
+                case dbus <i class="icon icon-link"></i>
+              
+            
+          </span>
+        
+        qdbus
+      </div>
+    </div>
+    
+    
+      
+      <div class="button button-github" role="button" aria-label="GitHub">
+        <a href="https://github.com/foreachsam/book-util-dbus" title="@foreachsam/book-util-dbus on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+      </div>
+    
+    <div class="button button-search" role="button" aria-label="Search">
+      <label class="toggle-button icon icon-search" title="Search" for="toggle-search"></label>
+    </div>
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+    </header>
+    <main class="main">
+      
+      <div class="drawer">
+        <nav aria-label="Navigation">
+  
+  <a href="/" class="project">
+    <div class="banner">
+      
+      <div class="name">
+        <strong>
+          D-Bus 使用筆記
+          <span class="version">
+            
+          </span>
+        </strong>
+        
+      </div>
+    </div>
+  </a>
+  <div class="scrollable">
+    <div class="wrapper">
+      
+      <div class="toc">
+        <ul>
+          
+            
+  <li>
+    <a class="" title="首頁" href="../../../../..">
+      首頁
+    </a>
+    
+  </li>
+
+          
+            
+  <li>
+    <span class="section">參考文件</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="manual" href="../../../../referance/manual/">
+      manual
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">deb package</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="index" href="../../../../deb-package/">
+      index
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="dbus" href="../../../../deb-package/dbus/">
+      dbus
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">command</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="dbus-send" href="../../../../command/dbus-send/">
+      dbus-send
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">case dbus</span>
+    <ul>
+      
+        
+  <li>
+    <a class="current" title="qdbus" href="./">
+      qdbus
+    </a>
+    
+      
+        
+      
+      
+        <ul>
+          
+            <li class="anchor">
+              <a title="起頭範例" href="#_1">
+                起頭範例
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="Session Bus 範例" href="#session-bus_1">
+                Session Bus 範例
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="System Bus 範例" href="#system-bus_1">
+                System Bus 範例
+              </a>
+            </li>
+          
+        </ul>
+      
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+            
+  <li>
+    <span class="section">case fcitx</span>
+    <ul>
+      
+        
+  <li>
+    <a class="" title="qdbus" href="../../../fcitx/basic/qdbus/">
+      qdbus
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="gdbus" href="../../../fcitx/basic/gdbus/">
+      gdbus
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="" title="dbus-send" href="../../../fcitx/basic/dbus-send/">
+      dbus-send
+    </a>
+    
+  </li>
+
+      
+    </ul>
+  </li>
+
+          
+        </ul>
+        
+          <hr>
+          <span class="section">The author</span>
+          <ul>
+            
+            
+              
+              <li>
+                <a href="https://github.com/foreachsam/book-util-dbus" target="_blank" title="@foreachsam/book-util-dbus on GitHub">
+                  @foreachsam/book-util-dbus on GitHub
+                </a>
+              </li>
+            
+          </ul>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+      </div>
+      <article class="article">
+        <div class="wrapper">
+          
+          <h1 id="qdbus-orgfreedesktopdbus">qdbus - org.freedesktop.DBus</h1>
+<h2 id="_1">起頭範例</h2>
+<h3 id="session-bus">Session Bus</h3>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ qdubs</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>:1.0
+ com.ubuntu.Upstart
+:1.1
+:1.10
+ com.canonical.URLDispatcher
+:1.105
+ org.gnome.Terminal
+:1.108
+:1.112
+ org.kde.konsole
+:1.113
+:1.114
+ org.freedesktop.Notifications
+:1.116
+ org.kde.knotify
+:1.118
+:1.119
+:1.120
+ org.kde.JobViewServer
+ org.kde.kuiserver
+:1.122
+:1.123
+:1.126
+:1.13
+:1.14
+ org.xfce.SessionManager
+:1.15
+ org.xfce.Xfconf
+:1.16
+ org.a11y.Bus
+:1.17
+:1.18
+ org.ayatana.bamf
+:1.19
+ org.freedesktop.PowerManagement
+ org.xfce.PowerManager
+:1.2
+ com.canonical.MediaScanner2.Daemon
+:1.20
+:1.21
+:1.22
+ org.xfce.Panel
+:1.23
+:1.24
+ ca.desrt.dconf
+:1.25
+:1.26
+ org.freedesktop.network-manager-applet
+:1.27
+:1.28
+ org.freedesktop.ScreenSaver
+ org.gnome.ScreenSaver
+:1.3
+ org.fcitx.Fcitx
+ org.fcitx.Fcitx-0
+ org.kde.StatusNotifierItem-1763-1
+:1.34
+ org.xfce.SettingsDaemon
+:1.36
+ org.xfce.FileManager
+ org.xfce.Thunar
+:1.37
+ org.xfce.xfdesktop
+:1.38
+:1.39
+ org.blueman.Applet
+:1.4
+ com.canonical.Unity.WindowStack
+:1.40
+ org.PulseAudio1
+ org.pulseaudio.Server
+:1.41
+:1.42
+:1.43
+:1.44
+:1.45
+:1.46
+:1.47
+:1.48
+:1.49
+:1.51
+:1.52
+:1.53
+:1.54
+:1.55
+:1.56
+ com.canonical.indicator.application
+:1.57
+ org.kde.StatusNotifierWatcher
+:1.58
+ com.canonical.indicator.messages
+:1.59
+ com.canonical.indicator.sound
+:1.6
+ org.freedesktop.secrets
+ org.gnome.keyring
+:1.60
+ org.bluez.obex
+:1.62
+ org.gtk.vfs.UDisks2VolumeMonitor
+:1.63
+ org.gtk.vfs.AfcVolumeMonitor
+:1.64
+ org.gtk.vfs.MTPVolumeMonitor
+:1.65
+ org.gtk.vfs.GPhoto2VolumeMonitor
+:1.66
+ org.gtk.vfs.GoaVolumeMonitor
+:1.68
+:1.69
+ org.gnome.GConf
+:1.70
+:1.71
+ org.kde.dolphin-2215
+:1.72
+ org.kde.klauncher
+:1.73
+ org.kde.kded
+:1.75
+:1.76
+:1.8
+ org.gtk.vfs.Daemon
+:1.80
+ org.kde.ActivityManager
+:1.81
+:1.82
+:1.83
+:1.84
+:1.85
+:1.86
+:1.9
+:1.90
+ org.gtk.vfs.mountpoint_2760
+:1.92
+ org.gtk.vfs.mountpoint_2771
+:1.96
+ org.gtk.vfs.mountpoint_2787
+:1.97
+ org.gtk.vfs.Metadata
+org.freedesktop.DBus</code></pre>
+
+
+<h3 id="system-bus">System Bus</h3>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ dbus --system</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>:1.0
+ org.freedesktop.systemd1
+:1.1
+ org.freedesktop.login1
+:1.11
+ org.freedesktop.thermald
+:1.14
+ org.freedesktop.NetworkManager
+:1.15
+:1.16
+:1.17
+:1.2
+ org.freedesktop.Avahi
+:1.20
+ fi.epitest.hostap.WPASupplicant
+ fi.w1.wpa_supplicant1
+:1.21
+:1.22
+:1.24
+ org.freedesktop.NetworkManager.dnsmasq
+:1.26
+:1.27
+:1.28
+:1.29
+:1.3
+ org.bluez
+:1.30
+ org.freedesktop.UDisks2
+:1.31
+:1.32
+:1.33
+:1.34
+:1.35
+ org.freedesktop.UPower
+:1.37
+ org.freedesktop.RealtimeKit1
+:1.38
+:1.4
+ org.freedesktop.URfkill
+:1.41
+ com.redhat.NewPrinterNotification
+ com.redhat.PrinterDriversInstaller
+:1.42
+:1.46
+:1.47
+:1.48
+:1.5
+ org.freedesktop.Accounts
+:1.50
+:1.51
+:1.52
+:1.53
+:1.55
+:1.57
+:1.58
+:1.6
+ org.freedesktop.ModemManager1
+:1.66
+:1.67
+:1.68
+:1.69
+:1.7
+ org.freedesktop.DisplayManager
+:1.8
+ org.ofono
+:1.9
+ org.freedesktop.PolicyKit1
+org.freedesktop.DBus</code></pre>
+
+
+<h2 id="session-bus_1">Session Bus 範例</h2>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ qdbus org.freedesktop.DBus</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>/</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ qdbus org.freedesktop.DBus /</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>signal void org.freedesktop.DBus.NameAcquired(QString)
+signal void org.freedesktop.DBus.NameLost(QString)
+signal void org.freedesktop.DBus.NameOwnerChanged(QString, QString, QString)
+method void org.freedesktop.DBus.AddMatch(QString)
+method QByteArray org.freedesktop.DBus.GetAdtAuditSessionData(QString)
+method QString org.freedesktop.DBus.GetConnectionAppArmorSecurityContext(QString)
+method QVariantMap org.freedesktop.DBus.GetConnectionCredentials(QString)
+method QByteArray org.freedesktop.DBus.GetConnectionSELinuxSecurityContext(QString)
+method uint org.freedesktop.DBus.GetConnectionUnixProcessID(QString)
+method uint org.freedesktop.DBus.GetConnectionUnixUser(QString)
+method QString org.freedesktop.DBus.GetId()
+method QString org.freedesktop.DBus.GetNameOwner(QString)
+method QString org.freedesktop.DBus.Hello()
+method QStringList org.freedesktop.DBus.ListActivatableNames()
+method QStringList org.freedesktop.DBus.ListNames()
+method QStringList org.freedesktop.DBus.ListQueuedOwners(QString)
+method bool org.freedesktop.DBus.NameHasOwner(QString)
+method uint org.freedesktop.DBus.ReleaseName(QString)
+method void org.freedesktop.DBus.ReloadConfig()
+method void org.freedesktop.DBus.RemoveMatch(QString)
+method uint org.freedesktop.DBus.RequestName(QString, uint)
+method uint org.freedesktop.DBus.StartServiceByName(QString, uint)
+method void org.freedesktop.DBus.UpdateActivationEnvironment(QMap&lt;QString,QString&gt;)
+method QString org.freedesktop.DBus.Introspectable.Introspect()
+method void org.freedesktop.DBus.Monitoring.BecomeMonitor(QStringList, uint)
+method {D-Bus type &quot;a{sas}&quot;} org.freedesktop.DBus.Debug.Stats.GetAllMatchRules()
+method QVariantMap org.freedesktop.DBus.Debug.Stats.GetConnectionStats(QString)
+method QVariantMap org.freedesktop.DBus.Debug.Stats.GetStats()</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ qdbus org.freedesktop.DBus / org.freedesktop.DBus.ListActivatableNames</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>org.freedesktop.DBus
+org.freedesktop.Notifications
+org.freedesktop.thumbnails.Manager1
+org.gnome.Builder
+org.freedesktop.systemd1
+org.xfce.Xfconf
+com.canonical.MediaScanner2.Extractor
+org.fcitx.Fcitx
+org.freedesktop.ColorHelper
+org.fedoraproject.Config.Printing
+org.gtk.vfs.Daemon
+org.kde.kwalletd
+org.freedesktop.thumbnails.Cache1
+com.canonical.hud
+com.nokia.singlesignonui
+com.canonical.Thumbnailer
+org.gnome.GConf
+com.nokia.SingleSignOn.Backup
+org.gnome.evolution.dataserver.Sources5
+org.gtk.vfs.UDisks2VolumeMonitor
+org.a11y.Bus
+org.gnome.Terminal
+org.kde.kiod5
+org.freedesktop.thumbnails.Thumbnailer1
+org.gnome.keyring
+org.freedesktop.PackageKit
+com.canonical.applications.Downloader
+org.xfce.FileManager
+org.gnome.FileRoller
+org.bluez.obex
+org.gtk.vfs.GPhoto2VolumeMonitor
+ca.desrt.dconf
+org.gnome.evolution.dataserver.UserPrompter0
+org.gnome.evince.Daemon
+com.google.code.AccountsSSO.SingleSignOn
+org.gnome.evolution.dataserver.Calendar7
+org.kde.kglobalaccel
+org.gtk.vfs.AfcVolumeMonitor
+org.ayatana.bamf
+org.freedesktop.FileManager1
+org.kde.knotify
+org.kde.kwalletd5
+org.gnome.Nautilus
+com.canonical.indicators.webcredentials
+org.gtk.vfs.GoaVolumeMonitor
+org.gtk.GLib.PACRunner
+org.gnome.Calculator.SearchProvider
+org.gnome.ArchiveManager1
+com.canonical.MediaScanner2
+org.gnome.evolution.dataserver.AddressBook9
+org.blueman.Applet
+org.xfce.Thunar
+org.gnome.zeitgeist.Engine
+com.canonical.payments
+org.gtk.vfs.Metadata
+org.kde.kuiserver
+org.gnome.keyring.SystemPrompter
+org.gnome.gedit
+org.freedesktop.secrets
+org.gtk.vfs.MTPVolumeMonitor
+ca.desrt.dconf-editor
+org.gnome.keyring.PrivatePrompter
+org.gnome.zeitgeist.SimpleIndexer
+org.gnome.Software</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code>$ ls /usr/share/dbus-1/services/ -1</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>blueman-applet.service
+ca.desrt.dconf-editor.service
+ca.desrt.dconf.service
+com.canonical.hud.service
+com.canonical.indicators.webcredentials.service
+com.canonical.MediaScanner2.Extractor.service
+com.canonical.MediaScanner2.service
+com.canonical.payments.service
+com.canonical.Thumbnailer.service
+com.google.code.AccountsSSO.SingleSignOn.service
+com.nokia.SingleSignOn.Backup.service
+com.nokia.singlesignonui.service
+org.a11y.Bus.service
+org.ayatana.bamf.service
+org.bluez.obex.service
+org.fcitx.Fcitx.service
+org.fedoraproject.Config.Printing.service
+org.freedesktop.ColorHelper.service
+org.freedesktop.FileManager1.service
+org.freedesktop.secrets.service
+org.freedesktop.systemd1.service
+org.gnome.Builder.service
+org.gnome.Calculator.SearchProvider.service
+org.gnome.evince.Daemon.service
+org.gnome.evolution.dataserver.AddressBook.service
+org.gnome.evolution.dataserver.Calendar.service
+org.gnome.evolution.dataserver.Sources.service
+org.gnome.evolution.dataserver.UserPrompter.service
+org.gnome.FileRoller.ArchiveManager1.service
+org.gnome.FileRoller.service
+org.gnome.GConf.service
+org.gnome.gedit.service
+org.gnome.keyring.PrivatePrompter.service
+org.gnome.keyring.service
+org.gnome.keyring.SystemPrompter.service
+org.gnome.Nautilus.service
+org.gnome.Software.service
+org.gnome.Terminal.service
+org.gnome.zeitgeist.fts.service
+org.gnome.zeitgeist.service
+org.gtk.GLib.PACRunner.service
+org.gtk.vfs.AfcVolumeMonitor.service
+org.gtk.vfs.Daemon.service
+org.gtk.vfs.GoaVolumeMonitor.service
+org.gtk.vfs.GPhoto2VolumeMonitor.service
+org.gtk.vfs.Metadata.service
+org.gtk.vfs.MTPVolumeMonitor.service
+org.gtk.vfs.UDisks2VolumeMonitor.service
+org.kde.dolphin.FileManager1.service
+org.kde.kglobalaccel.service
+org.kde.kiod5.service
+org.kde.knotify.service
+org.kde.kuiserver.service
+org.kde.kwalletd5.service
+org.kde.kwalletd.service
+org.mate.freedesktop.FileManager1.service
+org.xfce.FileManager.service
+org.xfce.Thunar.service
+org.xfce.Tumbler.Cache1.service
+org.xfce.Tumbler.Manager1.service
+org.xfce.Tumbler.Thumbnailer1.service
+org.xfce.xfce4-notifyd.Notifications.service
+org.xfce.Xfconf.service
+sessioninstaller.service
+ubuntu-download-manager.service</code></pre>
+
+
+<h2 id="system-bus_1">System Bus 範例</h2>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ qdbus --system org.freedesktop.DBus</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>/</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ qdbus --system org.freedesktop.DBus /</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>signal void org.freedesktop.DBus.NameAcquired(QString)
+signal void org.freedesktop.DBus.NameLost(QString)
+signal void org.freedesktop.DBus.NameOwnerChanged(QString, QString, QString)
+method void org.freedesktop.DBus.AddMatch(QString)
+method QByteArray org.freedesktop.DBus.GetAdtAuditSessionData(QString)
+method QString org.freedesktop.DBus.GetConnectionAppArmorSecurityContext(QString)
+method QVariantMap org.freedesktop.DBus.GetConnectionCredentials(QString)
+method QByteArray org.freedesktop.DBus.GetConnectionSELinuxSecurityContext(QString)
+method uint org.freedesktop.DBus.GetConnectionUnixProcessID(QString)
+method uint org.freedesktop.DBus.GetConnectionUnixUser(QString)
+method QString org.freedesktop.DBus.GetId()
+method QString org.freedesktop.DBus.GetNameOwner(QString)
+method QString org.freedesktop.DBus.Hello()
+method QStringList org.freedesktop.DBus.ListActivatableNames()
+method QStringList org.freedesktop.DBus.ListNames()
+method QStringList org.freedesktop.DBus.ListQueuedOwners(QString)
+method bool org.freedesktop.DBus.NameHasOwner(QString)
+method uint org.freedesktop.DBus.ReleaseName(QString)
+method void org.freedesktop.DBus.ReloadConfig()
+method void org.freedesktop.DBus.RemoveMatch(QString)
+method uint org.freedesktop.DBus.RequestName(QString, uint)
+method uint org.freedesktop.DBus.StartServiceByName(QString, uint)
+method void org.freedesktop.DBus.UpdateActivationEnvironment(QMap&lt;QString,QString&gt;)
+method QString org.freedesktop.DBus.Introspectable.Introspect()
+method void org.freedesktop.DBus.Monitoring.BecomeMonitor(QStringList, uint)
+method {D-Bus type &quot;a{sas}&quot;} org.freedesktop.DBus.Debug.Stats.GetAllMatchRules()
+method QVariantMap org.freedesktop.DBus.Debug.Stats.GetConnectionStats(QString)
+method QVariantMap org.freedesktop.DBus.Debug.Stats.GetStats()</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ qdbus --system org.freedesktop.DBus / org.freedesktop.DBus.ListActivatableNames</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>org.freedesktop.DBus
+org.freedesktop.fwupd
+org.freedesktop.login1
+com.canonical.UserMetrics
+org.freedesktop.SystemToolsBackends.GroupsConfig2
+com.ubuntu.LanguageSelector
+org.blueman.Mechanism
+org.freedesktop.SystemToolsBackends.NTPConfig
+org.freedesktop.SystemToolsBackends.HostsConfig
+com.hp.hplip
+org.freedesktop.SystemToolsBackends.NFSConfig
+org.freedesktop.ColorManager
+org.freedesktop.SystemToolsBackends.UsersConfig2
+org.kde.kcontrol.k3bsetup
+org.freedesktop.SystemToolsBackends
+com.ubuntu.SoftwareProperties
+org.kde.kcontrol.kcmremotewidgets
+org.freedesktop.systemd1
+org.freedesktop.thermald
+org.freedesktop.PolicyKit1
+org.freedesktop.Avahi
+org.freedesktop.ModemManager1
+org.freedesktop.hostname1
+org.debian.apt
+org.bluez
+org.freedesktop.SystemToolsBackends.ServiceConfig2
+org.freedesktop.PackageKit
+org.freedesktop.UPower
+org.freedesktop.SystemToolsBackends.SelfConfig2
+org.freedesktop.UDisks2
+com.canonical.applications.Downloader
+org.freedesktop.SystemToolsBackends.UserConfig2
+org.freedesktop.SystemToolsBackends.TimeConfig
+org.freedesktop.SystemToolsBackends.IfacesConfig
+org.freedesktop.SystemToolsBackends.ServicesConfig
+org.freedesktop.network1
+org.freedesktop.SystemToolsBackends.GroupConfig2
+org.freedesktop.resolve1
+fi.epitest.hostap.WPASupplicant
+com.ubuntu.ScreenResolution.Mechanism
+fi.w1.wpa_supplicant1
+org.freedesktop.Accounts
+org.freedesktop.timedate1
+org.freedesktop.SystemToolsBackends.Platform
+org.freedesktop.RealtimeKit1
+org.freedesktop.nm_dispatcher
+org.freedesktop.SystemToolsBackends.SMBConfig
+org.freedesktop.locale1</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ ls /usr/share/dbus-1/system-services/ -1</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>com.canonical.applications.Downloader.service
+com.canonical.UserMetrics.service
+com.hp.hplip.service
+com.ubuntu.LanguageSelector.service
+com.ubuntu.ScreenResolution.Mechanism.service
+com.ubuntu.SoftwareProperties.service
+fi.epitest.hostap.WPASupplicant.service
+fi.w1.wpa_supplicant1.service
+org.blueman.Mechanism.service
+org.bluez.service
+org.debian.apt.service
+org.freedesktop.Accounts.service
+org.freedesktop.Avahi.service
+org.freedesktop.ColorManager.service
+org.freedesktop.fwupd.service
+org.freedesktop.hostname1.service
+org.freedesktop.locale1.service
+org.freedesktop.login1.service
+org.freedesktop.ModemManager1.service
+org.freedesktop.network1.service
+org.freedesktop.nm_dispatcher.service
+org.freedesktop.PackageKit.service
+org.freedesktop.PolicyKit1.service
+org.freedesktop.RealtimeKit1.service
+org.freedesktop.resolve1.service
+org.freedesktop.systemd1.service
+org.freedesktop.SystemToolsBackends.GroupConfig2.service
+org.freedesktop.SystemToolsBackends.GroupsConfig2.service
+org.freedesktop.SystemToolsBackends.HostsConfig.service
+org.freedesktop.SystemToolsBackends.IfacesConfig.service
+org.freedesktop.SystemToolsBackends.NFSConfig.service
+org.freedesktop.SystemToolsBackends.NTPConfig.service
+org.freedesktop.SystemToolsBackends.Platform.service
+org.freedesktop.SystemToolsBackends.SelfConfig2.service
+org.freedesktop.SystemToolsBackends.service
+org.freedesktop.SystemToolsBackends.ServiceConfig2.service
+org.freedesktop.SystemToolsBackends.ServicesConfig.service
+org.freedesktop.SystemToolsBackends.SMBConfig.service
+org.freedesktop.SystemToolsBackends.TimeConfig.service
+org.freedesktop.SystemToolsBackends.UserConfig2.service
+org.freedesktop.SystemToolsBackends.UsersConfig2.service
+org.freedesktop.thermald.service
+org.freedesktop.timedate1.service
+org.freedesktop.UDisks2.service
+org.freedesktop.UPower.service
+org.kde.kcontrol.k3bsetup.service
+org.kde.kcontrol.kcmremotewidgets.service</code></pre>
+          <aside class="copyright" role="note">
+            
+              Copyright (c) foreachsam &ndash;
+            
+            Documentation built with
+            <a href="http://www.mkdocs.org" target="_blank">MkDocs</a>
+            using the
+            <a href="http://squidfunk.github.io/mkdocs-material/" target="_blank">
+              Material
+            </a>
+            theme.
+          </aside>
+          
+            <footer class="footer">
+              
+  <nav class="pagination" aria-label="Footer">
+    <div class="previous">
+      
+        <a href="../../../../command/dbus-send/" title="dbus-send">
+          <span class="direction">
+            上一頁
+          </span>
+          <div class="page">
+            <div class="button button-previous" role="button" aria-label="Previous">
+              <i class="icon icon-back"></i>
+            </div>
+            <div class="stretch">
+              <div class="title">
+                dbus-send
+              </div>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+    <div class="next">
+      
+        <a href="../../../fcitx/basic/qdbus/" title="qdbus">
+          <span class="direction">
+            下一頁
+          </span>
+          <div class="page">
+            <div class="stretch">
+              <div class="title">
+                qdbus
+              </div>
+            </div>
+            <div class="button button-next" role="button" aria-label="Next">
+              <i class="icon icon-forward"></i>
+            </div>
+          </div>
+        </a>
+      
+    </div>
+  </nav>
+
+            </footer>
+          
+        </div>
+      </article>
+      <div class="results" role="status" aria-live="polite">
+        <div class="scrollable">
+          <div class="wrapper">
+            <div class="meta"></div>
+            <div class="list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      var base_url = '../../../../..';
+      var repo_id  = '';
+    </script>
+    <script src="../../../../../assets/javascripts/application-997097ee0c.js"></script>
+    
+    
+      <script>
+        (function(i,s,o,g,r,a,m){
+          i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
+          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
+          m.parentNode.insertBefore(a,m)
+        })(window, document,
+          'script', '//www.google-analytics.com/analytics.js', 'ga');
+        /* General initialization */
+        ga('create', 'UA-56999876-1', 'foreachsam.github.io');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+        /* Track outbound links */
+        var buttons = document.querySelectorAll('a');
+        Array.prototype.map.call(buttons, function(item) {
+          if (item.host != document.location.host) {
+            item.addEventListener('click', function() {
+              var action = item.getAttribute('data-action') || 'follow';
+              ga('send', 'event', 'outbound', action, item.href);
+            });
+          }
+        });
+        /* Register handler to log search on blur */
+        var query = document.querySelector('.query');
+        query.addEventListener('blur', function() {
+          if (this.value) {
+            var path = document.location.pathname;
+            ga('send', 'pageview', path + '?q=' + this.value);
+          }
+        });
+      </script>
+    
+  </body>
+</html>

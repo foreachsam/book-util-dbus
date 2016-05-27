@@ -4,7 +4,7 @@
     
     <url>
      <loc>https://foreachsam.github.io/book-util-dbus/book/</loc>
-     <lastmod>2016-05-19</lastmod>
+     <lastmod>2016-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,7 +13,7 @@
         
     <url>
      <loc>https://foreachsam.github.io/book-util-dbus/book/content/referance/manual/</loc>
-     <lastmod>2016-05-19</lastmod>
+     <lastmod>2016-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -23,13 +23,13 @@
         
     <url>
      <loc>https://foreachsam.github.io/book-util-dbus/book/content/deb-package/</loc>
-     <lastmod>2016-05-19</lastmod>
+     <lastmod>2016-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://foreachsam.github.io/book-util-dbus/book/content/deb-package/dbus/</loc>
-     <lastmod>2016-05-19</lastmod>
+     <lastmod>2016-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -39,7 +39,17 @@
         
     <url>
      <loc>https://foreachsam.github.io/book-util-dbus/book/content/command/dbus-send/</loc>
-     <lastmod>2016-05-19</lastmod>
+     <lastmod>2016-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/dbus/basic/qdbus/</loc>
+     <lastmod>2016-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -49,19 +59,19 @@
         
     <url>
      <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/qdbus/</loc>
-     <lastmod>2016-05-19</lastmod>
+     <lastmod>2016-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gdbus/</loc>
-     <lastmod>2016-05-19</lastmod>
+     <lastmod>2016-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/dbus-send/</loc>
-     <lastmod>2016-05-19</lastmod>
+     <lastmod>2016-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

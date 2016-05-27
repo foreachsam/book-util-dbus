@@ -328,7 +328,13 @@
             </li>
           
             <li class="anchor">
-              <a title="參考文件" href="#_3">
+              <a title="使用範例" href="#_3">
+                使用範例
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="參考文件" href="#_4">
                 參考文件
               </a>
             </li>
@@ -457,7 +463,44 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 ...略...</code></pre>
 
 
-<p>輸入「q」，回到「Python console」。</p>
+<p>輸入「q」，回到「Python console」。(操作上應該跟less類似)</p>
+<p>輸入</p>
+<pre class="code"><code>&gt;&gt;&gt; print(GLib.Variant.__doc__)</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>:Constructors:
+
+::
+
+    new_array(child_type:GLib.VariantType=None, children:list=None) -&gt; GLib.Variant
+    new_boolean(value:bool) -&gt; GLib.Variant
+    new_byte(value:int) -&gt; GLib.Variant
+    new_bytestring(string:list) -&gt; GLib.Variant
+    new_bytestring_array(strv:list) -&gt; GLib.Variant
+    new_dict_entry(key:GLib.Variant, value:GLib.Variant) -&gt; GLib.Variant
+    new_double(value:float) -&gt; GLib.Variant
+    new_fixed_array(element_type:GLib.VariantType, elements, n_elements:int, element_size:int) -&gt; GLib.Variant
+    new_from_bytes(type:GLib.VariantType, bytes:GLib.Bytes, trusted:bool) -&gt; GLib.Variant
+    new_from_data(type:GLib.VariantType, data:list, trusted:bool, notify:GLib.DestroyNotify, user_data) -&gt; GLib.Variant
+    new_handle(value:int) -&gt; GLib.Variant
+    new_int16(value:int) -&gt; GLib.Variant
+    new_int32(value:int) -&gt; GLib.Variant
+    new_int64(value:int) -&gt; GLib.Variant
+    new_maybe(child_type:GLib.VariantType=None, child:GLib.Variant=None) -&gt; GLib.Variant
+    new_object_path(object_path:str) -&gt; GLib.Variant
+    new_objv(strv:list) -&gt; GLib.Variant
+    new_signature(signature:str) -&gt; GLib.Variant
+    new_string(string:str) -&gt; GLib.Variant
+    new_strv(strv:list) -&gt; GLib.Variant
+    new_tuple(children:list) -&gt; GLib.Variant
+    new_uint16(value:int) -&gt; GLib.Variant
+    new_uint32(value:int) -&gt; GLib.Variant
+    new_uint64(value:int) -&gt; GLib.Variant
+    new_variant(value:GLib.Variant) -&gt; GLib.Variant</code></pre>
+
+
+<h2 id="_3">使用範例</h2>
 <p>輸入</p>
 <pre class="code"><code>&gt;&gt;&gt; GLib.Variant('i', 1)</code></pre>
 
@@ -514,8 +557,12 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <pre class="code"><code>('apple', 'banana')</code></pre>
 
 
-<h2 id="_3">參考文件</h2>
-<p>可以從「Gnome Developer / GLib Reference Manual / <a href="https://developer.gnome.org/glib/stable/gvariant-format-strings.html">GVariant Format Strings</a>」</p>
+<h2 id="_4">參考文件</h2>
+<h3 id="api">Api</h3>
+<ul>
+<li>Python GI API Reference / <a href="https://lazka.github.io/pgi-docs/#GLib-2.0/structs/Variant.html#GLib.Variant">GLib.Variant</a></li>
+</ul>
+<p>另外可以從「Gnome Developer / GLib Reference Manual / <a href="https://developer.gnome.org/glib/stable/gvariant-format-strings.html">GVariant Format Strings</a>」</p>
 <p>找到</p>
 <pre class="code"><code>Symbols
 

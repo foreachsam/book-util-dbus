@@ -310,6 +310,46 @@
         
       
       
+        <ul>
+          
+            <li class="anchor">
+              <a title="測試環境" href="#_1">
+                測試環境
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="進入 Python Console" href="#python-console">
+                進入 Python Console
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="載入相關模組" href="#_2">
+                載入相關模組
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="觀看 help" href="#help">
+                觀看 help
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="使用範例" href="#_3">
+                使用範例
+              </a>
+            </li>
+          
+            <li class="anchor">
+              <a title="參考文件" href="#_4">
+                參考文件
+              </a>
+            </li>
+          
+        </ul>
+      
     
   </li>
 
@@ -343,6 +383,112 @@
         <div class="wrapper">
           
           <h1 id="glibvarianttype">GLib.VariantType</h1>
+<h2 id="_1">測試環境</h2>
+<ul>
+<li>Xubuntu 16.04 64位元</li>
+</ul>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ lsb_release -a</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 16.04 LTS
+Release:    16.04
+Codename:   xenial</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ python3 -V</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>Python 3.5.1+</code></pre>
+
+
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ dpkg -l python3-gi</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                     Version           Architecture      Description
++++-========================-=================-=================-======================================================
+ii  python3-gi               3.20.0-0ubuntu1   amd64             Python 3 bindings for gobject-introspection libraries</code></pre>
+
+
+<h2 id="python-console">進入 Python Console</h2>
+<p>執行</p>
+<pre class="code"><code class="language-sh">$ python3</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>Python 3.5.1+ (default, Mar 30 2016, 22:46:26)
+[GCC 5.3.1 20160330] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;</code></pre>
+
+
+<h2 id="_2">載入相關模組</h2>
+<p>載入「GLib」</p>
+<pre class="code"><code>&gt;&gt;&gt; from gi.repository import GLib</code></pre>
+
+
+<h2 id="help">觀看 help</h2>
+<p>輸入</p>
+<pre class="code"><code>&gt;&gt;&gt; help(GLib.VariantType)</code></pre>
+
+
+<p>輸入「q」，回到「Python console」。(操作上應該跟less類似)</p>
+<p>輸入</p>
+<pre class="code"><code>&gt;&gt;&gt; print(GLib.VariantType.__doc__)</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>:Constructors:
+
+::
+
+    new(type_string:str) -&gt; GLib.VariantType
+    new_array(element:GLib.VariantType) -&gt; GLib.VariantType
+    new_dict_entry(key:GLib.VariantType, value:GLib.VariantType) -&gt; GLib.VariantType
+    new_maybe(element:GLib.VariantType) -&gt; GLib.VariantType
+    new_tuple(items:list) -&gt; GLib.VariantType</code></pre>
+
+
+<h2 id="_3">使用範例</h2>
+<p>顯示</p>
+<pre class="code"><code>&gt;&gt;&gt; GLib.VariantType('()')</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>&lt;GLib.VariantType object at 0x7fe416188288 (GVariantType at 0x2929fb0)&gt;</code></pre>
+
+
+<p>輸入</p>
+<pre class="code"><code>&gt;&gt;&gt; GLib.VariantType('(s)')</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>&lt;GLib.VariantType object at 0x7fe416188288 (GVariantType at 0x293d380)&gt;</code></pre>
+
+
+<p>輸入</p>
+<pre class="code"><code>&gt;&gt;&gt; GLib.VariantType('(ss)')</code></pre>
+
+
+<p>顯示</p>
+<pre class="code"><code>&lt;GLib.VariantType object at 0x7fe415e55528 (GVariantType at 0x297b390)&gt;</code></pre>
+
+
+<h2 id="_4">參考文件</h2>
+<h3 id="api">Api</h3>
+<ul>
+<li>Python GI API Reference / <a href="https://lazka.github.io/pgi-docs/#GLib-2.0/structs/VariantType.html#GLib.VariantType">GLib.VariantType</a></li>
+</ul>
           <aside class="copyright" role="note">
             
               Copyright (c) foreachsam &ndash;

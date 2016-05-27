@@ -82,13 +82,19 @@
     </url>
         
     <url>
-     <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/pygi/</loc>
+     <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/pygi-gio/</loc>
      <lastmod>2016-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gjs/</loc>
+     <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gjs-gio/</loc>
+     <lastmod>2016-05-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/vala-gio/</loc>
      <lastmod>2016-05-28</lastmod>
      <changefreq>daily</changefreq>
     </url>

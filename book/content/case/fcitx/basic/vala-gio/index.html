@@ -9,19 +9,19 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>gjs - D-Bus 使用筆記</title>
+        <title>vala-gio - D-Bus 使用筆記</title>
       
       
       
-        <link rel="canonical" href="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gjs/">
+        <link rel="canonical" href="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/vala-gio/">
       
       
         <meta name="author" content="foreachsam">
       
     
-    <meta property="og:url" content="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gjs/">
+    <meta property="og:url" content="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/vala-gio/">
     <meta property="og:title" content="D-Bus 使用筆記">
-    <meta property="og:image" content="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/gjs//../../../../../">
+    <meta property="og:image" content="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/vala-gio//../../../../../">
     <meta name="apple-mobile-web-app-title" content="D-Bus 使用筆記">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -97,7 +97,7 @@
             
           </span>
         
-        gjs
+        vala-gio
       </div>
     </div>
     
@@ -284,8 +284,8 @@
       
         
   <li>
-    <a class="" title="pygi" href="../pygi/">
-      pygi
+    <a class="" title="pygi-gio" href="../pygi-gio/">
+      pygi-gio
     </a>
     
   </li>
@@ -293,8 +293,17 @@
       
         
   <li>
-    <a class="current" title="gjs" href="./">
-      gjs
+    <a class="" title="gjs-gio" href="../gjs-gio/">
+      gjs-gio
+    </a>
+    
+  </li>
+
+      
+        
+  <li>
+    <a class="current" title="vala-gio" href="./">
+      vala-gio
     </a>
     
       
@@ -382,97 +391,154 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="pygi-orgfcitxfcitx">pygi - org.fcitx.Fcitx</h1>
+          <h1 id="vala-gio-orgfcitxfcitx">vala-gio - org.fcitx.Fcitx</h1>
 <h2 id="script">Script</h2>
 <ul>
-<li>get-current-im.js</li>
+<li>get-current-im.vala</li>
 </ul>
-<pre class="code"><code class="language-gjs linenums">#!/usr/bin/env gjs
+<pre class="code"><code>using GLib;
 
-const GLib = imports.gi.GLib;
-const Gio = imports.gi.Gio;
+class App {
+    public static int main(string[] args) {
+        try {
+                DBusConnection bus = Bus.get_sync(BusType.SESSION);
+                Variant rtn = bus.call_sync(
+                        &quot;org.fcitx.Fcitx&quot;, //bus_name
+                        &quot;/inputmethod&quot;, //object_path
+                        &quot;org.fcitx.Fcitx.InputMethod&quot;, //interface_name
+                        &quot;GetCurrentIM&quot;, //method_name
+                        null, // parameters
+                        new VariantType(&quot;(s)&quot;), //reply_type
+                        DBusCallFlags.NONE, //flags
+                        -1, //timeout_msec
+                        null //cancellable
+                );
+
+                stdout.printf(&quot;%s\n&quot;, rtn.print(true));
+
+                //http://www.valadoc.org/#!api=glib-2.0/GLib.Variant
+                /*
+                string? val = null;
+                VariantIter iter = rtn.iterator();
+                iter.next(&quot;s&quot;, &amp;val);
+                stdout.printf(&quot;%s\n&quot;, val);
+                */
+
+        } catch (IOError e) {
+                warning (&quot;Error with DBus: %s&quot;, e.message);
+        } catch (Error e) {
+                warning (&quot;Error : %s&quot;, e.message);
+        }
+        return 0;
+    }
+}</code></pre>
 
 
-let bus = Gio.bus_get_sync(Gio.BusType.SESSION, null)
-let rtn = bus.call_sync(
-        'org.fcitx.Fcitx', //bus_name
-        '/inputmethod', //object_path
-        'org.fcitx.Fcitx.InputMethod', //interface_name
-        'GetCurrentIM', //method_name
-        null, // parameters
-        GLib.VariantType.new('(s)'), //reply_type
-        Gio.DBusCallFlags.NONE, //flags
-        -1, //timeout_msec
-        null //cancellable
-)
-
-//print(rtn.print(true));
-print(rtn.deep_unpack()[0]);</code></pre>
+<p>編譯</p>
+<pre class="code"><code class="language-sh">$ valac --pkg gio-2.0 get-current-im.vala</code></pre>
 
 
 <ul>
-<li>set-current-im.js</li>
+<li>set-current-im.vala</li>
 </ul>
-<pre class="code"><code class="language-gjs linenums">#!/usr/bin/env gjs
+<pre class="code"><code class="language-vala">using GLib;
 
-const GLib = imports.gi.GLib;
-const Gio = imports.gi.Gio;
+class App {
+    public static int main(string[] args) {
+        try {
+                DBusConnection bus = Bus.get_sync(BusType.SESSION);
+                Variant rtn = bus.call_sync(
+                        &quot;org.fcitx.Fcitx&quot;, //bus_name
+                        &quot;/inputmethod&quot;, //object_path
+                        &quot;org.fcitx.Fcitx.InputMethod&quot;, //interface_name
+                        &quot;SetCurrentIM&quot;, //method_name
+                        new Variant(&quot;(s)&quot;, &quot;fcitx-keyboard-us&quot;), // parameters
+                        new VariantType(&quot;()&quot;), //reply_type
+                        DBusCallFlags.NONE, //flags
+                        -1, //timeout_msec
+                        null //cancellable
+                );
+
+                stdout.printf(&quot;%s\n&quot;, rtn.print(true));
+
+                //http://www.valadoc.org/#!api=glib-2.0/GLib.Variant
+                /*
+                string? val = null;
+                VariantIter iter = rtn.iterator();
+                iter.next(&quot;s&quot;, &amp;val);
+                stdout.printf(&quot;%s\n&quot;, val);
+                */
+
+        } catch (IOError e) {
+                warning (&quot;Error with DBus: %s&quot;, e.message);
+        } catch (Error e) {
+                warning (&quot;Error : %s&quot;, e.message);
+        }
+        return 0;
+    }
+}</code></pre>
 
 
-let bus = Gio.bus_get_sync(Gio.BusType.SESSION, null)
-let rtn = bus.call_sync(
-        'org.fcitx.Fcitx', //bus_name
-        '/inputmethod', //object_path
-        'org.fcitx.Fcitx.InputMethod', //interface_name
-        'SetCurrentIM', //method_name
-        GLib.Variant.new('(s)', ['fcitx-keyboard-us']), // parameters
-        GLib.VariantType.new('()'), //reply_type
-        Gio.DBusCallFlags.NONE, //flags
-        -1, //timeout_msec
-        null //cancellable
-)
-
-print(rtn.print(true));
-//print(rtn.deep_unpack());</code></pre>
+<p>編譯</p>
+<pre class="code"><code class="language-sh">valac --pkg gio-2.0 set-current-im.vala</code></pre>
 
 
 <ul>
-<li>set-current-im-chewing.js</li>
+<li>set-current-im-chewing.vala</li>
 </ul>
-<pre class="code"><code class="language-gjs linenums">#!/usr/bin/env gjs
+<pre class="code"><code class="language-vala">using GLib;
 
-const GLib = imports.gi.GLib;
-const Gio = imports.gi.Gio;
+class App {
+    public static int main(string[] args) {
+        try {
+                DBusConnection bus = Bus.get_sync(BusType.SESSION);
+                Variant rtn = bus.call_sync(
+                        &quot;org.fcitx.Fcitx&quot;, //bus_name
+                        &quot;/inputmethod&quot;, //object_path
+                        &quot;org.fcitx.Fcitx.InputMethod&quot;, //interface_name
+                        &quot;SetCurrentIM&quot;, //method_name
+                        new Variant(&quot;(s)&quot;, &quot;chewing&quot;), // parameters
+                        new VariantType(&quot;()&quot;), //reply_type
+                        DBusCallFlags.NONE, //flags
+                        -1, //timeout_msec
+                        null //cancellable
+                );
+
+                stdout.printf(&quot;%s\n&quot;, rtn.print(true));
+
+                //http://www.valadoc.org/#!api=glib-2.0/GLib.Variant
+                /*
+                string? val = null;
+                VariantIter iter = rtn.iterator();
+                iter.next(&quot;s&quot;, &amp;val);
+                stdout.printf(&quot;%s\n&quot;, val);
+                */
+
+        } catch (IOError e) {
+                warning (&quot;Error with DBus: %s&quot;, e.message);
+        } catch (Error e) {
+                warning (&quot;Error : %s&quot;, e.message);
+        }
+        return 0;
+    }
+}</code></pre>
 
 
-let bus = Gio.bus_get_sync(Gio.BusType.SESSION, null)
-let rtn = bus.call_sync(
-        'org.fcitx.Fcitx', //bus_name
-        '/inputmethod', //object_path
-        'org.fcitx.Fcitx.InputMethod', //interface_name
-        'SetCurrentIM', //method_name
-        GLib.Variant.new('(s)', ['chewing']), // parameters
-        GLib.VariantType.new('()'), //reply_type
-        Gio.DBusCallFlags.NONE, //flags
-        -1, //timeout_msec
-        null //cancellable
-)
-
-print(rtn.print(true));
-//print(rtn.deep_unpack());</code></pre>
+<p>編譯</p>
+<pre class="code"><code class="language-sh">valac --pkg gio-2.0 set-current-im-chewing.vala</code></pre>
 
 
 <h2 id="_1">使用範例</h2>
 <p>執行</p>
-<pre class="code"><code class="language-sh">$ ./get-current-im.js</code></pre>
+<pre class="code"><code class="language-sh">$ ./get-current-im</code></pre>
 
 
 <p>顯示</p>
-<pre class="code"><code>fcitx-keyboard-us</code></pre>
+<pre class="code"><code>('fcitx-keyboard-us',)</code></pre>
 
 
 <p>執行</p>
-<pre class="code"><code class="language-sh">$ ./set-current-im-chewing.js</code></pre>
+<pre class="code"><code class="language-sh">$ ./set-current-im-chewing</code></pre>
 
 
 <p>顯示</p>
@@ -480,15 +546,15 @@ print(rtn.print(true));
 
 
 <p>執行</p>
-<pre class="code"><code class="language-sh">$ ./get-current-im.js</code></pre>
+<pre class="code"><code class="language-sh">$ ./get-current-im</code></pre>
 
 
 <p>顯示</p>
-<pre class="code"><code>chewing</code></pre>
+<pre class="code"><code>('chewing',)</code></pre>
 
 
 <p>執行</p>
-<pre class="code"><code class="language-sh">$ ./set-current-im.js</code></pre>
+<pre class="code"><code class="language-sh">$ ./set-current-im</code></pre>
 
 
 <p>顯示</p>
@@ -496,31 +562,27 @@ print(rtn.print(true));
 
 
 <p>執行</p>
-<pre class="code"><code class="language-sh">$ ./get-current-im.js</code></pre>
+<pre class="code"><code class="language-sh">$ ./get-current-im</code></pre>
 
 
 <p>顯示</p>
-<pre class="code"><code>fcitx-keyboard-us</code></pre>
+<pre class="code"><code>('fcitx-keyboard-us',)</code></pre>
 
 
 <h2 id="api">API</h2>
-<h3 id="peoplegnome">people.gnome</h3>
+<p><a href="http://www.valadoc.org/#!wiki=index">valadoc</a></p>
 <ul>
-<li><a href="https://people.gnome.org/~gcampagna/docs/Gio-2.0/">Gio</a></li>
-<li><a href="https://people.gnome.org/~gcampagna/docs/Gio-2.0/Gio.bus_get_sync.html">Gio.bus_get_sync</a></li>
-<li><a href="https://people.gnome.org/~gcampagna/docs/Gio-2.0/Gio.DBusConnection.html">Gio.DBusConnection</a></li>
-<li><a href="https://people.gnome.org/~gcampagna/docs/Gio-2.0/Gio.DBusCallFlags.html">Gio.DBusCallFlags</a></li>
-<li><a href="https://people.gnome.org/~gcampagna/docs/GLib-2.0/">GLib</a></li>
-<li><a href="https://people.gnome.org/~gcampagna/docs/GLib-2.0/GLib.Variant.html">GLib.Variant</a></li>
-<li><a href="https://people.gnome.org/~gcampagna/docs/GLib-2.0/GLib.VariantType.html">GLib.VariantType</a></li>
-</ul>
-<h3 id="rootjs">rootjs</h3>
-<ul>
-<li><a href="https://www.roojs.com/seed/gir-1.2-gtk-3.0/gjs/Gio.html">Gio</a></li>
-<li><a href="https://www.roojs.com/seed/gir-1.2-gtk-3.0/gjs/Gio.DBusConnection.html">Gio.DBusConnection</a></li>
-<li><a href="https://www.roojs.com/seed/gir-1.2-gtk-3.0/gjs/Gio.DBusCallFlags.html">Gio.DBusCallFlags</a></li>
-<li><a href="https://www.roojs.com/seed/gir-1.2-gtk-3.0/gjs/GLib.Variant.html">GLib.Variant</a></li>
-<li><a href="https://www.roojs.com/seed/gir-1.2-gtk-3.0/gjs/GLib.VariantType.html">GLib.VariantType</a></li>
+<li><a href="http://www.valadoc.org/#!wiki=gio-2.0/index">Gio</a></li>
+<li><a href="http://www.valadoc.org/#!api=gio-2.0/GLib.Bus.get_sync">GLib.Bus.get_sync</a></li>
+<li><a href="http://www.valadoc.org/#!api=gio-2.0/GLib.DBusConnection">GLib.DBusConnection</a></li>
+<li>
+<p><a href="http://www.valadoc.org/#!api=gio-2.0/GLib.DBusCallFlags">GLib.DBusCallFlags</a></p>
+</li>
+<li>
+<p><a href="http://www.valadoc.org/#!wiki=glib-2.0/index">GLib</a></p>
+</li>
+<li><a href="http://www.valadoc.org/#!api=glib-2.0/GLib.Variant">GLib.Variant</a></li>
+<li><a href="http://www.valadoc.org/#!api=glib-2.0/GLib.VariantType">GLib.VariantType</a></li>
 </ul>
           <aside class="copyright" role="note">
             
@@ -540,7 +602,7 @@ print(rtn.print(true));
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href="../pygi/" title="pygi">
+        <a href="../gjs-gio/" title="gjs-gio">
           <span class="direction">
             上一頁
           </span>
@@ -550,7 +612,7 @@ print(rtn.print(true));
             </div>
             <div class="stretch">
               <div class="title">
-                pygi
+                gjs-gio
               </div>
             </div>
           </div>

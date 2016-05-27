@@ -17,8 +17,8 @@ let rtn = bus.call_sync(
         null //cancellable
 )
 
-//print(rtn.print(true));
-print(rtn.deep_unpack()[0]);
+print(rtn.print(true));
+//print(rtn.deep_unpack()[0]);
  
 
 

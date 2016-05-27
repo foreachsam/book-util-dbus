@@ -16,19 +16,39 @@
             "title": "\u74b0\u5883"
         },
         {
-            "location": "/content/referance/manual/",
+            "location": "/content/reference/manual/",
             "text": "manual\n\n\n\u95b1\u8b80\u6587\u4ef6\n\n\n\n\n$ man 1 \ndbus-monitor\n\n\n$ man 1 \ndbus-send\n\n\n$ man 1 \ndbus-uuidgen\n\n\n$ man 1 \ndbus-daemon\n\n\n$ man 1 \ndbus-update-activation-environment\n\n\n$ man 1 \ndbus-cleanup-sockets\n\n\n$ man 1 \ndbus-run-session\n\n\nWikipedia / \nD-Bus\n\n\n\u7dad\u57fa\u767e\u79d1 / \nD-Bus\n\n\nArch Wiki / \nD-Bus",
             "title": "manual"
         },
         {
-            "location": "/content/referance/manual/#manual",
+            "location": "/content/reference/manual/#manual",
             "text": "",
             "title": "manual"
         },
         {
-            "location": "/content/referance/manual/#_1",
+            "location": "/content/reference/manual/#_1",
             "text": "$ man 1  dbus-monitor  $ man 1  dbus-send  $ man 1  dbus-uuidgen  $ man 1  dbus-daemon  $ man 1  dbus-update-activation-environment  $ man 1  dbus-cleanup-sockets  $ man 1  dbus-run-session  Wikipedia /  D-Bus  \u7dad\u57fa\u767e\u79d1 /  D-Bus  Arch Wiki /  D-Bus",
             "title": "\u95b1\u8b80\u6587\u4ef6"
+        },
+        {
+            "location": "/content/reference/api/",
+            "text": "api\n\n\nGnome Developer / GLib Reference Manual\n\n\n\n\nGVariant Format Strings\n\n\nGVariant\n\n\nGVariantType\n\n\n\n\nPython GI API Reference (Python GObject Introspection API Reference)\n\n\n\n\n[Gio.DBusConnection] https://lazka.github.io/pgi-docs/#Gio-2.0/classes/DBusConnection.html#Gio.DBusConnection\n\n\nGLib.Variant\n\n\nGLib.VariantType\n\n\nGLib-2.0 / \nStructures",
+            "title": "api"
+        },
+        {
+            "location": "/content/reference/api/#api",
+            "text": "",
+            "title": "api"
+        },
+        {
+            "location": "/content/reference/api/#gnome-developer-glib-reference-manual",
+            "text": "GVariant Format Strings  GVariant  GVariantType",
+            "title": "Gnome Developer / GLib Reference Manual"
+        },
+        {
+            "location": "/content/reference/api/#python-gi-api-reference-python-gobject-introspection-api-reference",
+            "text": "[Gio.DBusConnection] https://lazka.github.io/pgi-docs/#Gio-2.0/classes/DBusConnection.html#Gio.DBusConnection  GLib.Variant  GLib.VariantType  GLib-2.0 /  Structures",
+            "title": "Python GI API Reference (Python GObject Introspection API Reference)"
         },
         {
             "location": "/content/deb-package/",

@@ -12,7 +12,13 @@
     
         
     <url>
-     <loc>https://foreachsam.github.io/book-util-dbus/book/content/referance/manual/</loc>
+     <loc>https://foreachsam.github.io/book-util-dbus/book/content/reference/manual/</loc>
+     <lastmod>2016-05-27</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://foreachsam.github.io/book-util-dbus/book/content/reference/api/</loc>
      <lastmod>2016-05-27</lastmod>
      <changefreq>daily</changefreq>
     </url>

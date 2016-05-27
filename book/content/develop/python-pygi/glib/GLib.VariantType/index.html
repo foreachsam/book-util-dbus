@@ -9,19 +9,19 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     
       
-        <title>qdbus - D-Bus 使用筆記</title>
+        <title>GLib.VariantType - D-Bus 使用筆記</title>
       
       
       
-        <link rel="canonical" href="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/qdbus/">
+        <link rel="canonical" href="https://foreachsam.github.io/book-util-dbus/book/content/develop/python-pygi/glib/GLib.VariantType/">
       
       
         <meta name="author" content="foreachsam">
       
     
-    <meta property="og:url" content="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/qdbus/">
+    <meta property="og:url" content="https://foreachsam.github.io/book-util-dbus/book/content/develop/python-pygi/glib/GLib.VariantType/">
     <meta property="og:title" content="D-Bus 使用筆記">
-    <meta property="og:image" content="https://foreachsam.github.io/book-util-dbus/book/content/case/fcitx/basic/qdbus//../../../../../">
+    <meta property="og:image" content="https://foreachsam.github.io/book-util-dbus/book/content/develop/python-pygi/glib/GLib.VariantType//../../../../../">
     <meta name="apple-mobile-web-app-title" content="D-Bus 使用筆記">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -92,12 +92,12 @@
           <span class="path">
             
               
-                case fcitx <i class="icon icon-link"></i>
+                develop python pygi <i class="icon icon-link"></i>
               
             
           </span>
         
-        qdbus
+        GLib.VariantType
       </div>
     </div>
     
@@ -239,7 +239,7 @@
       
         
   <li>
-    <a class="" title="qdbus" href="../../../dbus/basic/qdbus/">
+    <a class="" title="qdbus" href="../../../../case/dbus/basic/qdbus/">
       qdbus
     </a>
     
@@ -257,37 +257,16 @@
       
         
   <li>
-    <a class="current" title="qdbus" href="./">
+    <a class="" title="qdbus" href="../../../../case/fcitx/basic/qdbus/">
       qdbus
     </a>
-    
-      
-        
-      
-      
-        <ul>
-          
-            <li class="anchor">
-              <a title="說明" href="#_1">
-                說明
-              </a>
-            </li>
-          
-            <li class="anchor">
-              <a title="範例" href="#_2">
-                範例
-              </a>
-            </li>
-          
-        </ul>
-      
     
   </li>
 
       
         
   <li>
-    <a class="" title="gdbus" href="../gdbus/">
+    <a class="" title="gdbus" href="../../../../case/fcitx/basic/gdbus/">
       gdbus
     </a>
     
@@ -296,7 +275,7 @@
       
         
   <li>
-    <a class="" title="dbus-send" href="../dbus-send/">
+    <a class="" title="dbus-send" href="../../../../case/fcitx/basic/dbus-send/">
       dbus-send
     </a>
     
@@ -314,7 +293,7 @@
       
         
   <li>
-    <a class="" title="GLib.Variant" href="../../../../develop/python-pygi/glib/GLib.Variant/">
+    <a class="" title="GLib.Variant" href="../GLib.Variant/">
       GLib.Variant
     </a>
     
@@ -323,9 +302,14 @@
       
         
   <li>
-    <a class="" title="GLib.VariantType" href="../../../../develop/python-pygi/glib/GLib.VariantType/">
+    <a class="current" title="GLib.VariantType" href="./">
       GLib.VariantType
     </a>
+    
+      
+        
+      
+      
     
   </li>
 
@@ -358,90 +342,7 @@
       <article class="article">
         <div class="wrapper">
           
-          <h1 id="qdbus-orgfcitxfcitx">qdbus - org.fcitx.Fcitx</h1>
-<h2 id="_1">說明</h2>
-<p>這個範例，說明如何利用「<a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/qdbus.1.html">qdbus</a>」這個指令，來跟「<a href="http://packages.ubuntu.com/xenial/fcitx">fcitx</a>」溝通，切換輸入法。</p>
-<h2 id="_2">範例</h2>
-<p>執行</p>
-<pre class="code"><code class="language-sh">$ qdbus org.fcitx.Fcitx</code></pre>
-
-
-<p>顯示</p>
-<pre class="code"><code>/
-/MenuBar
-/StatusNotifierItem
-/inputmethod
-/keyboard
-/kimpanel</code></pre>
-
-
-<p>執行</p>
-<pre class="code"><code class="language-sh">$ qdbus org.fcitx.Fcitx /inputmethod</code></pre>
-
-
-<p>顯示</p>
-<pre class="code"><code>method QString org.freedesktop.DBus.Introspectable.Introspect()
-signal void org.freedesktop.DBus.Properties.PropertiesChanged(QString interface_name, QVariantMap changed_properties, QStringList invalidated_properties)
-method QDBusVariant org.freedesktop.DBus.Properties.Get(QString interface_name, QString property_name)
-method QVariantMap org.freedesktop.DBus.Properties.GetAll(QString interface_name)
-method void org.freedesktop.DBus.Properties.Set(QString interface_name, QString property_name, QDBusVariant value)
-property readwrite QString org.fcitx.Fcitx.InputMethod.CurrentIM
-property readwrite {D-Bus type &quot;a(sssb)&quot;} org.fcitx.Fcitx.InputMethod.IMList
-method void org.fcitx.Fcitx.InputMethod.ActivateIM()
-method void org.fcitx.Fcitx.InputMethod.Configure()
-method void org.fcitx.Fcitx.InputMethod.ConfigureAddon(QString addon)
-method void org.fcitx.Fcitx.InputMethod.ConfigureIM(QString im)
-method int org.fcitx.Fcitx.InputMethod.CreateIC(uint&amp; keyval1, uint&amp; state1, uint&amp; keyval2, uint&amp; state2)
-method int org.fcitx.Fcitx.InputMethod.CreateICv2(QString appname, bool&amp; enable, uint&amp; keyval1, uint&amp; state1, uint&amp; keyval2, uint&amp; state2)
-method int org.fcitx.Fcitx.InputMethod.CreateICv3(QString appname, int pid, bool&amp; enable, uint&amp; keyval1, uint&amp; state1, uint&amp; keyval2, uint&amp; state2)
-method void org.fcitx.Fcitx.InputMethod.Exit()
-method QString org.fcitx.Fcitx.InputMethod.GetCurrentIM()
-method int org.fcitx.Fcitx.InputMethod.GetCurrentState()
-method QString org.fcitx.Fcitx.InputMethod.GetCurrentUI()
-method QString org.fcitx.Fcitx.InputMethod.GetIMAddon(QString im)
-method void org.fcitx.Fcitx.InputMethod.InactivateIM()
-method void org.fcitx.Fcitx.InputMethod.ReloadAddonConfig(QString addon)
-method void org.fcitx.Fcitx.InputMethod.ReloadConfig()
-method void org.fcitx.Fcitx.InputMethod.ResetIMList()
-method void org.fcitx.Fcitx.InputMethod.Restart()
-method void org.fcitx.Fcitx.InputMethod.SetCurrentIM(QString im)
-method void org.fcitx.Fcitx.InputMethod.ToggleIM()</code></pre>
-
-
-<p>執行</p>
-<pre class="code"><code class="language-sh">$ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM</code></pre>
-
-
-<p>顯示</p>
-<pre class="code"><code>fcitx-keyboard-us</code></pre>
-
-
-<p>執行</p>
-<pre class="code"><code class="language-sh">$ qdbus --literal org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM</code></pre>
-
-
-<p>顯示</p>
-<pre class="code"><code>&quot;fcitx-keyboard-us&quot;</code></pre>
-
-
-<p>執行</p>
-<pre class="code"><code class="language-sh">$ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM chewing</code></pre>
-
-
-<p>就會把輸入法切換到「<a href="http://packages.ubuntu.com/xenial/fcitx-chewing">fcitx-chewing (新酷音)</a>」。</p>
-<p>執行</p>
-<pre class="code"><code class="language-sh">$ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.GetCurrentIM</code></pre>
-
-
-<p>顯示</p>
-<pre class="code"><code>chewing</code></pre>
-
-
-<p>執行</p>
-<pre class="code"><code class="language-sh">$ qdbus org.fcitx.Fcitx /inputmethod org.fcitx.Fcitx.InputMethod.SetCurrentIM fcitx-keyboard-us</code></pre>
-
-
-<p>就會把輸入法切回到「英文輸入」。</p>
+          <h1 id="glibvarianttype">GLib.VariantType</h1>
           <aside class="copyright" role="note">
             
               Copyright (c) foreachsam &ndash;
@@ -460,7 +361,7 @@ method void org.fcitx.Fcitx.InputMethod.ToggleIM()</code></pre>
   <nav class="pagination" aria-label="Footer">
     <div class="previous">
       
-        <a href="../../../dbus/basic/qdbus/" title="qdbus">
+        <a href="../GLib.Variant/" title="GLib.Variant">
           <span class="direction">
             上一頁
           </span>
@@ -470,7 +371,7 @@ method void org.fcitx.Fcitx.InputMethod.ToggleIM()</code></pre>
             </div>
             <div class="stretch">
               <div class="title">
-                qdbus
+                GLib.Variant
               </div>
             </div>
           </div>
@@ -478,22 +379,6 @@ method void org.fcitx.Fcitx.InputMethod.ToggleIM()</code></pre>
       
     </div>
     <div class="next">
-      
-        <a href="../gdbus/" title="gdbus">
-          <span class="direction">
-            下一頁
-          </span>
-          <div class="page">
-            <div class="stretch">
-              <div class="title">
-                gdbus
-              </div>
-            </div>
-            <div class="button button-next" role="button" aria-label="Next">
-              <i class="icon icon-forward"></i>
-            </div>
-          </div>
-        </a>
       
     </div>
   </nav>

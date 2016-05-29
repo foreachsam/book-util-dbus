@@ -32,7 +32,7 @@
         },
         {
             "location": "/content/reference/api/",
-            "text": "api\n\n\nGnome Developer / GLib Reference Manual\n\n\n\n\nGVariant Format Strings\n\n\nGVariant\n\n\nGVariantType\n\n\n\n\nPython GI API Reference (Python GObject Introspection API Reference)\n\n\n\n\n[Gio.DBusConnection] https://lazka.github.io/pgi-docs/#Gio-2.0/classes/DBusConnection.html#Gio.DBusConnection\n\n\nGLib.Variant\n\n\nGLib.VariantType\n\n\nGLib-2.0 / \nStructures",
+            "text": "api\n\n\nGnome Developer / GLib Reference Manual\n\n\n\n\nGVariant Format Strings\n\n\nGVariant\n\n\nGVariantType\n\n\n\n\nPython GI API Reference (Python GObject Introspection API Reference)\n\n\n\n\nGio\n\n\nGio.bus_get_sync\n\n\nGio.BusType\n\n\nGio.DBusConnection\n\n\nGLib\n\n\nGLib / \nStructures\n\n\nGLib.Variant\n\n\nGLib.VariantType",
             "title": "api"
         },
         {
@@ -47,7 +47,7 @@
         },
         {
             "location": "/content/reference/api/#python-gi-api-reference-python-gobject-introspection-api-reference",
-            "text": "[Gio.DBusConnection] https://lazka.github.io/pgi-docs/#Gio-2.0/classes/DBusConnection.html#Gio.DBusConnection  GLib.Variant  GLib.VariantType  GLib-2.0 /  Structures",
+            "text": "Gio  Gio.bus_get_sync  Gio.BusType  Gio.DBusConnection  GLib  GLib /  Structures  GLib.Variant  GLib.VariantType",
             "title": "Python GI API Reference (Python GObject Introspection API Reference)"
         },
         {
